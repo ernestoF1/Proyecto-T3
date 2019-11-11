@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+ <link rel="stylesheet" type="text/css" href="static/css/nuevaventa.css" th:href="@{/css/nuevaventa.css}">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+	<div class="container ">
+		<h1>Nueva venta</h1>
+
+		<div class="card col-lg-7">
+		
+			<div class="card-header ">Registro de nueva venta</div>
+			
+			<div class="card-body color-cabecera">
+
+				<form th:action="@{/usuario/saveventa}" th:object="${venta}"
+					method="post">
+
+
+					<div class="col-13 carrito-img">
+                      <img src="static/img/carrito.png" th:src="@{/img/carrito.png}"/>
+                    </div>
+					<div class="form-group">
+						<label for="fecha_envio">Fecha de envio</label> <input
+							type="text" class="control-label col-md-3"
+							placeholder="2019/01/10" th:field="*{fecha_envio}" />
+
+					</div>
+					
+					<div class="form-group">
+						<label for="cantidad">Cantidad</label> <input
+							type="text" class="control-label col-md-3"
+							placeholder=cantidad th:field="*{cantidad}" />
+
+					</div>
+					
+					
+					<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="producto">Producto Nombre:</label> 
+						<select th:field="*{producto}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="productos : ${productos}"
+					      	th:value="${productos.id}" th:text="${productos.nombre}" ></option>
+					      	
+					    </select>
+					    
+					
+					</div>
+					</div>
+					<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="tipoPago">Tipo Pago:</label> 
+						<select th:field="*{tipoPago}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="tipoPago : ${tipoPagos}"
+					      	th:value="${tipoPago.id}" th:text="${tipoPago.nombre}"></option>
+					    </select>
+					
+					</div>
+					 </div>
+					 <div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="metodoEntrega">Metodo Entrega:</label> 
+						<select th:field="*{metodoentrega}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="metodo: ${metodoEntregas}"
+					      	th:value="${metodo.id}" th:text="${metodo.nombre}"></option>
+					    </select>
+					
+					</div>
+					 </div>
+					
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Guardar
+					</button>
+					<a th:href="@{/}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

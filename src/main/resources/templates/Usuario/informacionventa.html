@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div class="col-12">
+		<h2>Ventas</h2>
+
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre del comprador</th>
+						<th scope="col">Fecha De emision</th>
+						<th scope="col">Tipo usuario</th>
+						<th scope="col">Estado de venta</th>
+						<th scope="col">Total compra</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="detalleventa: ${usuario.listaDetalle}">
+						<th scope="row" th:text="${detalleventa.id}">1</th>
+						<td scope="row" th:text="${detalleventa.nombre}">Mark</td>
+						<td scope="row" th:text="${detalleventa.fechaYHora}">Mark</td>
+						<td scope="row" th:text="${detalleventa.usuario.tipousuario.nombre}">Mark</td>
+						<td scope="row" th:text="${detalleventa.estado}">Mark</td>
+						<td scope="row" th:text="${detalleventa.total}">Mark</td>
+						
+
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/usuario}" class="btn btn-danger"> <i
+				class="fas fa-undo"></i> Regresar
+			</a>
+		</div>
+	</div>
+</body>
+</html>
